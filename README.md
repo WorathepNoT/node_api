@@ -1,4 +1,4 @@
 # node_api
-test writing an API using node.js
+test writing  API using node.js
 -getdata
 -save data
