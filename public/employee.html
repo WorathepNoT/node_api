@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>แสดงข้อมูลพนักงาน</title>
+</head>
+<body>
+    <h1>ข้อมูลพนักงาน</h1>
+    <div id="Emp_Name"></div>
+
+    <script>
+        async function getFirstEmployee() {
+            try {
+                const response = await fetch('/api/employees'); 
+                const data = await response.json();
+                if (data.length > 0) {
+                    const firstEmployeeName = data[0].EmpName;
+                    document.getElementById('Emp_Name').textContent = `ชื่อพนักงานคนแรก: ${firstEmployeeName}`;
+                } else {
+                    document.getElementById('Emp_Name').innerText = 'ไม่พบข้อมูลพนักงาน';
+                }
+            } catch (error) {
+                document.getElementById('Emp_Name').innerText = 'เกิดข้อผิดพลาดในการดึงข้อมูล';
+            }
+        }
+        window.onload = getFirstEmployee;
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>แบบฟอร์มเพิ่มพนักงาน</title>
+</head>
+<body>
+    <h1>แบบฟอร์มเพิ่มพนักงาน</h1>
+    <form action="/addEmployee" method="POST" onsubmit="return validateForm()">
+        <label for="EmpNum">รหัสพนักงาน:</label>
+        <input type="text" id="EmpNum" name="EmpNum" ><br>
+
+        <label for="EmpName">ชื่อพนักงาน:</label>
+        <input type="text" id="EmpName" name="EmpName" ><br>
+
+        <label for="Position">ตำแหน่ง:</label>
+        <select id="Position" name="Position" >
+            <option value="">-- เลือกตำแหน่ง --</option>
+            <option value="Managing Diretor">Managing Diretor</option>
+            <option value="Manager">Manager</option>
+            <option value="Superviosor">Superviosor</option>
+            <option value="Salesman">Salesman</option>
+            <option value="Clerk">Clerk</option>
+        </select><br>
+
+        <input type="submit" value="บันทึก">
+    </form>
+    <script>
+        function validateForm() {
+            const empNum = document.getElementById('EmpNum').value;
+            const empName = document.getElementById('EmpName').value;
+            const position = document.getElementById('Position').value;
+            let text ="";
+            if (empNum.length !== 4) {
+                text += "-กรุณากรอกรหัสพนักงาน\n";
+            }
+            if (empName === "") {
+                text += "-กรุณากรอกชื่อพนักงาน\n";
+            }
+            if (position === "") {
+                text += "-กรุณาเลือกตำแหน่ง";
+            }
+            try{
+                if(text == ""){
+                  alert('ข้อมูลถูกบันทึกแล้ว');
+                }else{ 
+                    alert(text); return false;
+                }
+                
+
+            }catch(e){ console.log(e)}
+        }
+    </script>
+</body>
+</html>
+
